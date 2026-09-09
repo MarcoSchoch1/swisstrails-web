@@ -1,16 +1,18 @@
-<ul>
-    @for (trail of trails; track trail.id) {
-        <li [class.difficult]="trail.difficulty === 'difficult'">
-            {{ trail.name }} - {{ trail.lengthKm }} km
-        </li>
-        <app-trail-card [trail]="trail" (logRequest)="handleLog($event)"/>
-    } @empty {
-        <li>No trails logged yet.</li>
-    }
-</ul>
+@if (trails$ | async; as trails) {
+    <ul>
+        @for (trail of trails; track trail.id) {
+            <li [class.difficult]="trail.difficulty === 'difficult'">
+                {{ trail.name }} - {{ trail.lengthKm }} km
+            </li>
+            <app-trail-card [trail]="trail" (logRequest)="handleLog($event)"/>
+        } @empty {
+            <li>No trails logged yet.</li>
+        }
+    </ul>
 
-@if (trails.length > 10) {
-    <p>You've logged quite a few trails!</p>
-} @else {
-    <p>Keep logging to build your trail history.</p>
+    @if (trails.length > 10) {
+        <p>You've logged quite a few trails!</p>
+    } @else {
+        <p>Keep logging to build your trail history.</p>
+    }
 }
