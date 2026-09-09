@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TrailList } from './trail-list/trail-list';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, TrailList],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
