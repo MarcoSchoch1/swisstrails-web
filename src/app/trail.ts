@@ -3,7 +3,7 @@ export interface Trail {
     name: String;
     lengthKm: number;
     elevation: number;
-    difficulty: 'easy | moderate | difficult';
+    difficulty: 'easy' | 'moderate' | 'difficult';
     checkpoints: string[];
 }
 
