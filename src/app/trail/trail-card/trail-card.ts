@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Trail } from '../../models/trail';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-trail-card',
   styleUrl: './trail-card.scss',
   templateUrl: './trail-card.html',

@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TrailStateService } from '../../service/trail-state-service';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, RouterLink],
   selector: 'app-trail-detail',
   styleUrl: './trail-detail.scss',
   templateUrl: './trail-detail.html',

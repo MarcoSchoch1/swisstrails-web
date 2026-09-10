@@ -1,6 +1,17 @@
-<h3 class="card">{{ trail.name }}</h3>
-<p>Length: {{ trail.lengthKm }}</p>
-<p class="card--difficult">Difficulty: {{ trail.difficulty }}</p>
-<!-- <img [src]="'/assets/' + trail.difficulty + '.svg'" [alt]="trail.name"> -->
+<article class="trail-card" [class.trail-card--difficult]="trail.difficulty === 'difficult'">
+    <div class="trail-card__header">
+        <a class="trail-card__name" [routerLink]="['/trails', trail.id]">{{ trail.name }}</a>
+        <span class="badge"
+            [class.badge-easy]="trail.difficulty === 'easy'"
+            [class.badge-moderate]="trail.difficulty === 'moderate'"
+            [class.badge-difficult]="trail.difficulty === 'difficult'">{{ trail.difficulty }}</span>
+    </div>
 
-<button (click)="onLogClick()">Log a trail!</button>
+    <div class="trail-card__stats">
+        <span>{{ trail.lengthKm }} km</span>
+        <span class="trail-card__dot">&middot;</span>
+        <span>{{ trail.elevation }} m elevation</span>
+    </div>
+
+    <button class="btn btn-outline trail-card__log" (click)="onLogClick()">Log a visit</button>
+</article>

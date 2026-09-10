@@ -1,7 +1,35 @@
 @if (trail$ | async; as trail) {
-   <p>{{ trail.name }}</p>
-   <p>{{ trail.lengthKm }}</p>
-   <p>{{ trail.elevation }}</p>
-   <p>{{ trail.difficulty }}</p>
-   <p>{{ trail.checkpointNames }}</p>
+    <a class="back-link" routerLink="/">&larr; Back to trails</a>
+
+    <div class="detail-head">
+        <h1>{{ trail.name }}</h1>
+        <span class="badge"
+            [class.badge-easy]="trail.difficulty === 'easy'"
+            [class.badge-moderate]="trail.difficulty === 'moderate'"
+            [class.badge-difficult]="trail.difficulty === 'difficult'">{{ trail.difficulty }}</span>
+    </div>
+
+    <div class="stat-row">
+        <div class="stat">
+            <span class="stat__value">{{ trail.lengthKm }} km</span>
+            <span class="stat__label">Length</span>
+        </div>
+        <div class="stat">
+            <span class="stat__value">{{ trail.elevation }} m</span>
+            <span class="stat__label">Elevation</span>
+        </div>
+        <div class="stat">
+            <span class="stat__value">{{ trail.checkpointNames.length }}</span>
+            <span class="stat__label">Checkpoints</span>
+        </div>
+    </div>
+
+    @if (trail.checkpointNames.length > 0) {
+        <h2>Checkpoints</h2>
+        <ol class="checkpoint-list">
+            @for (checkpoint of trail.checkpointNames; track checkpoint) {
+                <li>{{ checkpoint }}</li>
+            }
+        </ol>
+    }
 }

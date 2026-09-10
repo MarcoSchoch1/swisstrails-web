@@ -1,0 +1,41 @@
+.trail-form {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.75rem;
+  max-width: 520px;
+}
+
+.field-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.field-row .field {
+  flex: 1;
+}
+
+.checkpoints {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.checkpoint-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkpoint-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.trail-form__submit {
+  width: 100%;
+}

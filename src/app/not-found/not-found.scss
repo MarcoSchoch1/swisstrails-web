@@ -1,0 +1,16 @@
+.not-found {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.not-found__code {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--color-border);
+  margin: 0;
+}
+
+.not-found__text {
+  color: var(--color-muted);
+  margin-bottom: 1.5rem;
+}

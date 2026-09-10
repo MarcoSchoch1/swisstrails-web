@@ -1,50 +1,55 @@
-<form [formGroup]="trailForm" (ngSubmit)="onSubmit()">
-    <label>
-        Name
+<h1>Add a Trail</h1>
+
+<form class="trail-form" [formGroup]="trailForm" (ngSubmit)="onSubmit()">
+    <label class="field">
+        <span class="label-text">Name</span>
         <input formControlName="name" />
+        @if (trailForm.get('name')?.invalid && trailForm.get('name')?.touched) {
+            <span class="error">Name must be at least 3 characters</span>
+        }
     </label>
-    @if (trailForm.get('name')?.invalid && trailForm.get('name')?.touched) {
-    <span class="error">Name must be at least 3 characters</span>
-    }
 
-    <label>
-        Length (km)
-        <input formControlName="lengthKm" type="number" step="0.1" />
-    </label>
-    @if (trailForm.get('lengthKm')?.invalid && trailForm.get('lengthKm')?.touched) {
-    <span class="error">Length must be at least 0.1 km</span>
-    }
+    <div class="field-row">
+        <label class="field">
+            <span class="label-text">Length (km)</span>
+            <input formControlName="lengthKm" type="number" step="0.1" />
+            @if (trailForm.get('lengthKm')?.invalid && trailForm.get('lengthKm')?.touched) {
+                <span class="error">Length must be at least 0.1 km</span>
+            }
+        </label>
 
-    <label>
-        Elevation (m)
-        <input formControlName="elevation" type="number" />
-    </label>
-    @if (trailForm.get('elevation')?.invalid && trailForm.get('elevation')?.touched) {
-    <span class="error">Elevation is required</span>
-    }
+        <label class="field">
+            <span class="label-text">Elevation (m)</span>
+            <input formControlName="elevation" type="number" />
+            @if (trailForm.get('elevation')?.invalid && trailForm.get('elevation')?.touched) {
+                <span class="error">Elevation is required</span>
+            }
+        </label>
+    </div>
 
-    <label>
-        Difficulty
+    <label class="field">
+        <span class="label-text">Difficulty</span>
         <select formControlName="difficulty">
             <option value="easy">Easy</option>
             <option value="moderate">Moderate</option>
             <option value="difficult">Difficult</option>
         </select>
-    </label>
-    @if (trailForm.get('difficulty')?.invalid && trailForm.get('difficulty')?.touched) {
-    <span class="error">Difficulty is required</span>
-    }
-
-    <div formArrayName="checkpointNames">
-        @for (control of checkpointNames.controls; track $index) {
-        <div [formGroupName]="$index">
-            <input formControlName="name" placeholder="Checkpoint name" />
-            <input formControlName="elevationM" type="number" placeholder="Elevation (m)" />
-            <button type="button" (click)="removeCheckpoint($index)">Remove</button>
-        </div>
+        @if (trailForm.get('difficulty')?.invalid && trailForm.get('difficulty')?.touched) {
+            <span class="error">Difficulty is required</span>
         }
-    </div>
-    <button type="button" (click)="addCheckpoint()">Add checkpoint</button>
+    </label>
 
-    <button type="submit" [disabled]="trailForm.invalid">Log Trail</button>
+    <div class="checkpoints" formArrayName="checkpointNames">
+        <span class="label-text">Checkpoints</span>
+        @for (control of checkpointNames.controls; track $index) {
+            <div class="checkpoint-row" [formGroupName]="$index">
+                <input formControlName="name" placeholder="Checkpoint name" />
+                <input formControlName="elevationM" type="number" placeholder="Elevation (m)" />
+                <button type="button" class="btn btn-ghost-danger" (click)="removeCheckpoint($index)">Remove</button>
+            </div>
+        }
+        <button type="button" class="btn btn-outline" (click)="addCheckpoint()">+ Add checkpoint</button>
+    </div>
+
+    <button type="submit" class="btn btn-primary trail-form__submit" [disabled]="trailForm.invalid">Log Trail</button>
 </form>

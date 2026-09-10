@@ -1,16 +1,21 @@
-<ul>
-    @for (trail of trailState.trails(); track trail.id) {
-        <li [class.difficult]="trail.difficulty === 'difficult'">
-            {{ trail.name }} - {{ trail.lengthKm }} km
-        </li>
-        <app-trail-card [trail]="trail" (logRequest)="handleLog($event)"/>
-    } @empty {
-        <li>No trails logged yet.</li>
-    }
-</ul>
+<div class="page-head">
+    <h1>Trails</h1>
+    <p class="page-head__subtitle">{{ trailState.trailCount() }} trail{{ trailState.trailCount() === 1 ? '' : 's' }} logged so far</p>
+</div>
+
+@if (trailState.trails().length > 0) {
+    <div class="trail-grid">
+        @for (trail of trailState.trails(); track trail.id) {
+            <app-trail-card [trail]="trail" (logRequest)="handleLog($event)"/>
+        }
+    </div>
+} @else {
+    <div class="empty-state">
+        <p>No trails logged yet.</p>
+        <a class="btn btn-primary" routerLink="/trails/add">Add your first trail</a>
+    </div>
+}
 
 @if (trailState.trails().length > 10) {
-    <p>You've logged quite a few trails!</p>
-} @else {
-    <p>Keep logging to build your trail history.</p>
+    <p class="banner">You've logged quite a few trails!</p>
 }
