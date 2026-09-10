@@ -1,0 +1,6 @@
+<h3 class="card">{{ trail.name }}</h3>
+<p>Length: {{ trail.lengthKm }}</p>
+<p class="card--difficult">Difficulty: {{ trail.difficulty }}</p>
+<!-- <img [src]="'/assets/' + trail.difficulty + '.svg'" [alt]="trail.name"> -->
+
+<button (click)="onLogClick()">Log a trail!</button>

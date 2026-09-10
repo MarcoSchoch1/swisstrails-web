@@ -1,0 +1,5 @@
+.card {
+  border-left: 4px solid var(--difficulty-color, gray);
+  padding: 1rem;
+}
+.card--difficult { --difficulty-color: #b3272b; }

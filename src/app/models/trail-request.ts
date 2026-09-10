@@ -3,5 +3,5 @@ export interface TrailRequest {
   lengthKm: number;
   elevation: number;
   difficulty: 'easy' | 'moderate' | 'difficult';
-  checkpoints: string[];
+  checkpointNames: { name: string; elevationM: number }[];
 }

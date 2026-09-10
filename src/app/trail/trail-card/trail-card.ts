@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Trail } from '../models/trail';
+import { Trail } from '../../models/trail';
 
 @Component({
   imports: [],

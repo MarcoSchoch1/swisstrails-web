@@ -4,7 +4,7 @@ export interface Trail {
     lengthKm: number;
     elevation: number;
     difficulty: 'easy' | 'moderate' | 'difficult';
-    checkpoints: string[];
+    checkpointNames: string[];
 }
 
 function summerize(trail: Trail): string {
