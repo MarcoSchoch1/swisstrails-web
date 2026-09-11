@@ -3,11 +3,12 @@ import { Trail } from '../models/trail';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TrailRequest } from '../models/trail-request';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({ providedIn: 'root'})
 export class TrailStateService {
     private http = inject(HttpClient)
-    private baseUrl = 'http://localhost:8080/api/trails'
+    private baseUrl = `${environment.apiUrl}/trails`
     private trailsSingals = signal<Trail[]>([]);
     trails = this.trailsSingals.asReadonly();
     trailCount = computed(() => this.trailsSingals().length)
