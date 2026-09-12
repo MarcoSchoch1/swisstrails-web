@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { TrailStateService } from '../../service/trail-state-service';
 import { TrailRequest } from '../../models/trail-request';
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   selector: 'app-add-trail',
   styleUrl: './add-trail.scss',
   templateUrl: './add-trail.html',
