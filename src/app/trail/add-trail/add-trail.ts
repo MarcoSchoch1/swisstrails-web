@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TrailStateService } from '../../service/trail-state-service';
 import { TrailRequest } from '../../models/trail-request';
 
@@ -13,6 +13,7 @@ import { TrailRequest } from '../../models/trail-request';
 export class AddTrail {
   private formBuilder = inject(FormBuilder);
   private trailService = inject(TrailStateService);
+  private router = inject(Router);
 
   trailForm = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
@@ -28,7 +29,9 @@ export class AddTrail {
 
   onSubmit() {
     if (this.trailForm.invalid) return;
-    this.trailService.add(this.trailForm.value as TrailRequest).subscribe();
+    this.trailService.add(this.trailForm.value as TrailRequest).subscribe({
+      next: () => this.router.navigate(['/']),
+    });
   }
 
   get checkpointNames() {
