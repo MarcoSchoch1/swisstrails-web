@@ -17,6 +17,6 @@ export class TrailList implements OnInit {
   }
 
   handleLog(trailId: number) {
-    console.log(trailId);
+    this.trailState.logVisit(trailId);
   }
 }

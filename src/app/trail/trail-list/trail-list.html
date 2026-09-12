@@ -6,7 +6,7 @@
 @if (trailState.trails().length > 0) {
     <div class="trail-grid">
         @for (trail of trailState.trails(); track trail.id) {
-            <app-trail-card [trail]="trail" (logRequest)="handleLog($event)"/>
+            <app-trail-card [trail]="trail" [visitCount]="trailState.visitCounts()[trail.id] ?? 0" (logRequest)="handleLog($event)"/>
         }
     </div>
 } @else {

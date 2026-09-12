@@ -10,6 +10,7 @@ import { Trail } from '../../models/trail';
 })
 export class TrailCard {
   @Input({ required: true }) trail!: Trail;
+  @Input() visitCount = 0;
   @Output() logRequest = new EventEmitter<number>();
 
   onLogClick() {

@@ -13,6 +13,16 @@ export class TrailStateService {
     trails = this.trailsSingals.asReadonly();
     trailCount = computed(() => this.trailsSingals().length)
 
+    private visitCountsSignal = signal<Record<number, number>>({});
+    visitCounts = this.visitCountsSignal.asReadonly();
+
+    logVisit(trailId: number) {
+        this.visitCountsSignal.update(current => ({
+            ...current,
+            [trailId]: (current[trailId] ?? 0) + 1,
+        }));
+    }
+
     setTrails(trails: Trail[]) {
         this.trailsSingals.set(trails);
     }

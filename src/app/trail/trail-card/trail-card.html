@@ -13,5 +13,10 @@
         <span>{{ trail.elevation }} m elevation</span>
     </div>
 
-    <button class="btn btn-outline trail-card__log" (click)="onLogClick()">Log a visit</button>
+    <div class="trail-card__footer">
+        <button class="btn btn-outline trail-card__log" (click)="onLogClick()">Log a visit</button>
+        @if (visitCount > 0) {
+            <span class="trail-card__visits">{{ visitCount }} visit{{ visitCount === 1 ? '' : 's' }} logged</span>
+        }
+    </div>
 </article>
